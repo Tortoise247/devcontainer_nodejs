@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  electron_app:
+    build:
+      context: ./electron_dev
+      args:
+        - ROOT_PASSWORD=${ROOT_PASSWORD}
+    image: electron_dev:0.1
+    container_name: electron_dev
+    volumes:
+      - ./app:/app
+      - \\wsl.localhost\${DISTRO}\tmp\.X11-unix:/tmp/.X11-unix 
+      - \\wsl.localhost\${DISTRO}\mnt\wslg\runtime-dir:/mnt/wslg/runtime-dir/
+    privileged: true
+    working_dir: /app
+    networks:
+      - electron_dev_network
+    tty: true
+    ports:
+      - "9223:9223"
+
+
+networks:
+  electron_dev_network:
+    driver: bridge

@@ -1,0 +1,13 @@
+{
+	"name": "electron devenv",	
+// docker-compose.ymlのファイルパスを指定
+	"dockerComposeFile": "../docker-compose.yml",
+// docker-compose.ymlで指定しているpythonのservice名を指定
+	"service": "electron_app",
+// 指定したserviceのworkspaceフォルダを指定              
+	"workspaceFolder": "/app",
+	"remoteUser": "developer",
+	"postCreateCommand": "bash"
+
+
+}
